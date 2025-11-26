@@ -140,6 +140,31 @@
     });
   });
 </script>
+  <script>
+  const CORRECT_PASSWORD = "131225";
+
+  const loginScreen = document.getElementById("loginScreen");
+  const btnLogin = document.getElementById("btnLogin");
+  const loginError = document.getElementById("loginError");
+  const passInput = document.getElementById("adminPass");
+
+  btnLogin.addEventListener("click", () => {
+    const typed = passInput.value.trim();
+
+    if (typed === CORRECT_PASSWORD) {
+      loginScreen.style.display = "none"; // Esconde el login
+    } else {
+      loginError.textContent = "Contraseña incorrecta";
+      passInput.style.border = "1px solid #e74c3c";
+    }
+  });
+
+  // ENTER también hace login
+  passInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") btnLogin.click();
+  });
+</script>
+
 
 </body>
 </html>
