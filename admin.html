@@ -4,6 +4,71 @@
 <meta charset="UTF-8">
 <title>Confirmaciones de boda</title>
 <style>
+  /* Fondo detrás del login */
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Caja */
+.login-box {
+  background: #ffffff;
+  padding: 40px;
+  width: 350px;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid #d4af37;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+}
+
+.login-box h2 {
+  margin-top: 0;
+  color: #a67c00;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.login-box button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  background: #d4af37;
+  border: none;
+  color: white;
+  font-size: 17px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-box button:hover {
+  background: #b8921b;
+}
+
+.error-msg {
+  color: #c0392b;
+  margin-top: 15px;
+  font-size: 14px;
+  height: 18px;
+}
+
   body { font-family: Arial; padding: 40px; }
   h1 { color: #b58b00; }
   table { width: 100%; border-collapse: collapse; margin-top: 20px; }
