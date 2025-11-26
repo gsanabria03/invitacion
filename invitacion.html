@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación de Boda – Stephanie & Gabriel</title>
+  
+  <!-- Fuentes elegantes -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background: #ffffff;
+      font-family: 'Playfair Display', serif;
+      color: #444;
+    }
+
+    /* Marco dorado elegante */
+    .border-wrapper {
+      border: 12px solid transparent;
+      padding: 20px;
+      border-image: url('https://i.imgur.com/WX0c6PV.png') 30 round; /* Marco dorado estilo antiguo */
+      min-height: 100vh;
+    }
+
+    /* Caja central */
+    .container {
+      max-width: 750px;
+      margin: auto;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #d4af37;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+      border-radius: 12px;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 65px;
+      text-align: center;
+      color: #c29b09;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 22px;
+      color: #a67c00;
+      margin-top: 0;
+    }
+
+    p {
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    /* Carrusel */
+    .carousel {
+      margin: 30px auto;
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 2px solid #d4af37;
+      position: relative;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: slide 12s infinite;
+    }
+
+    @keyframes slide {
+      0% {opacity: 1}
+      33% {opacity: 0}
+      66% {opacity: 1}
+    }
+
+    /* FORMULARIO */
+    form {
+      margin-top: 40px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #7a5500;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px;
+      border: 1px solid #d4af37;
+      border-radius: 6px;
+      background: #fffdf7;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background: #d4af37;
+      border: none;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #c29b09;
+    }
+  </style>
+</head>
+<body>
+
+<div class="border-wrapper">
+  <div class="container">
+
+    <h1>Stephanie & Gabriel</h1>
+    <h2>Nos casamos</h2>
+
+    <p>Con gran alegría te invitamos a celebrar nuestra boda.</p>
+    <p><strong>13 de diciembre de este año</strong></p>
+    <p><strong>De 9:00 a.m. a 12:00 p.m.</strong></p>
+    <p>Será un honor contar con tu presencia en este día tan especial.</p>
+
+    <!-- CARRUSEL DE FOTOS -->
+    <div class="carousel">
+      <img src="https://i.imgur.com/kN3PG2v.jpeg" alt="Foto 1" />
+      <!-- Puedes agregar más imágenes en JS -->
+    </div>
+
+    <!-- FORMULARIO -->
+    <form id="formBoda">
+      <label>Nombre completo *</label>
+      <input type="text" id="nombre" required />
+
+      <label>Número telefónico (opcional)</label>
+      <input type="text" id="telefono" />
+
+      <label>¿Asistirás?</label>
+      <select id="asistencia" required>
+        <option value="">Selecciona una opción</option>
+        <option value="Si">Sí asistiré</option>
+        <option value="No">No podré asistir</option>
+      </select>
+
+      <button type="submit">Confirmar asistencia</button>
+    </form>
+
+  </div>
+</div>
+
+<script type="module">
+  // TU CONFIG DE FIREBASE
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getDatabase, push, ref } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+  const firebaseConfig = {
+     apiKey: "AIzaSyAXMqQpi7g62FKTftQrckYfE2tbjZwz6iY",
+    authDomain: "invitacion-c93eb.firebaseapp.com",
+    projectId: "invitacion-c93eb",
+    storageBucket: "invitacion-c93eb.firebasestorage.app",
+    messagingSenderId: "22772201554",
+    appId: "1:22772201554:web:a4d602ca0377478abac78b"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // Enviar formulario a Firebase
+  document.getElementById("formBoda").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value;
+    const telefono = document.getElementById("telefono").value;
+    const asistencia = document.getElementById("asistencia").value;
+
+    push(ref(db, "confirmaciones/"), {
+      nombre,
+      telefono,
+      asistencia,
+      fecha: new Date().toISOString()
+    });
+
+    alert("¡Gracias por confirmar! ❤️");
+
+    // Redireccionar al HTML admin si quieres
+    // window.location.href = "admin.html";
+  });
+</script>
+
+</body>
+</html>
