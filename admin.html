@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Confirmaciones de boda</title>
+<style>
+  body { font-family: Arial; padding: 40px; }
+  h1 { color: #b58b00; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  th, td {
+    border: 1px solid #d4af37;
+    padding: 12px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Listado de confirmaciones</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Teléfono</th>
+      <th>Asistencia</th>
+      <th>Fecha</th>
+    </tr>
+  </thead>
+  <tbody id="tablaRegistros"></tbody>
+</table>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getDatabase, onValue, ref } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+  const firebaseConfig = {
+     apiKey: "AIzaSyAXMqQpi7g62FKTftQrckYfE2tbjZwz6iY",
+    authDomain: "invitacion-c93eb.firebaseapp.com",
+    projectId: "invitacion-c93eb",
+    storageBucket: "invitacion-c93eb.firebasestorage.app",
+    messagingSenderId: "22772201554",
+    appId: "1:22772201554:web:a4d602ca0377478abac78b"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  const tabla = document.getElementById("tablaRegistros");
+
+  onValue(ref(db, "confirmaciones/"), (snapshot) => {
+    tabla.innerHTML = "";
+    snapshot.forEach((child) => {
+      const data = child.val();
+      tabla.innerHTML += `
+        <tr>
+          <td>${data.nombre}</td>
+          <td>${data.telefono || "-"}</td>
+          <td>${data.asistencia}</td>
+          <td>${data.fecha}</td>
+        </tr>
+      `;
+    });
+  });
+</script>
+
+</body>
+</html>
