@@ -196,12 +196,13 @@
     const telefono = document.getElementById("telefono").value;
     const asistencia = document.getElementById("asistencia").value;
 
-    push(ref(db, "confirmaciones/"), {
+   push(ref(db, "confirmaciones/"), {
       nombre,
       telefono,
       asistencia,
-      fecha: new Date().toISOString()
-    });
+      fecha: new Date().toISOString(),
+      secret: "131225"
+  });
 
     alert("¡Gracias por confirmar! ❤️");
 
