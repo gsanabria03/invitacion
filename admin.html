@@ -112,13 +112,15 @@
   import { getDatabase, onValue, ref } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
   const firebaseConfig = {
-     apiKey: "AIzaSyAXMqQpi7g62FKTftQrckYfE2tbjZwz6iY",
+    apiKey: "AIzaSyAXMqQpi7g62FKTftQrckYfE2tbjZwz6iY",
     authDomain: "invitacion-c93eb.firebaseapp.com",
+    databaseURL: "https://invitacion-c93eb-default-rtdb.firebaseio.com",
     projectId: "invitacion-c93eb",
-    storageBucket: "invitacion-c93eb.firebasestorage.app",
+    storageBucket: "invitacion-c93eb.appspot.com",
     messagingSenderId: "22772201554",
     appId: "1:22772201554:web:a4d602ca0377478abac78b"
   };
+
 
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
