@@ -164,7 +164,6 @@ onValue(ref(db, "confirmaciones/"), (snapshot) => {
     tabla.innerHTML += `
       <tr class="${clase}">
         <td>${data.nombre}</td>
-        <td>${data.telefono || "-"}</td>
         <td>${data.asistencia}</td>
         <td>${data.fecha}</td>
       </tr>
