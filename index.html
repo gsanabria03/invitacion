@@ -152,59 +152,7 @@
 
   </style>
 </head>
-  <!-- POPUP ELEGANTE -->
-<div id="popup" 
-     style="
-       display:none;
-       position:fixed;
-       top:0; left:0;
-       width:100%; height:100%;
-       background:rgba(0,0,0,0.4);
-       backdrop-filter:blur(4px);
-       z-index:9999;
-       justify-content:center;
-       align-items:center;
-     ">
-  
-  <div style="
-      background:white;
-      padding:35px;
-      width:85%;
-      max-width:360px;
-      text-align:center;
-      border-radius:15px;
-      border:3px solid #d4af37;
-      box-shadow:0 0 25px rgba(212,175,55,0.35);
-      font-family:'Playfair Display', serif;
-  ">
-      <h3 style="margin:0; color:#a67c00; font-size:26px; font-weight:600;">
-        ¡Gracias por confirmar!
-      </h3>
 
-      <p style="margin-top:12px; font-size:18px; color:#555;">
-        Hemos recibido tu confirmación con mucho cariño.  
-        ¡Nos vemos en la boda! 💛
-      </p>
-
-      <button onclick="closePopup()" style="
-        margin-top:20px;
-        padding:12px 20px;
-        background:#d4af37;
-        color:white;
-        border:none;
-        font-size:17px;
-        font-weight:bold;
-        border-radius:8px;
-        cursor:pointer;
-        transition:0.3s;
-      "
-      onmouseover="this.style.opacity='0.85'"
-      onmouseout="this.style.opacity='1'">
-        Cerrar
-      </button>
-  </div>
-
-</div>
 <body>
 
 <div class="border-wrapper">
@@ -325,6 +273,60 @@
     // window.location.href = "admin.html";
   });
 </script>
+  <!-- POPUP ELEGANTE -->
+<div id="popup" 
+     style="
+       display:none;
+       position:fixed;
+       top:0; left:0;
+       width:100%; height:100%;
+       background:rgba(0,0,0,0.4);
+       backdrop-filter:blur(4px);
+       z-index:9999;
+       justify-content:center;
+       align-items:center;
+     ">
+  
+  <div style="
+      background:white;
+      padding:35px;
+      width:85%;
+      max-width:360px;
+      text-align:center;
+      border-radius:15px;
+      border:3px solid #d4af37;
+      box-shadow:0 0 25px rgba(212,175,55,0.35);
+      font-family:'Playfair Display', serif;
+  ">
+      <h3 style="margin:0; color:#a67c00; font-size:26px; font-weight:600;">
+        ¡Gracias por confirmar!
+      </h3>
+
+      <p style="margin-top:12px; font-size:18px; color:#555;">
+        Hemos recibido tu confirmación con mucho cariño.  
+        ¡Nos vemos en la boda! 💛
+      </p>
+
+      <button onclick="closePopup()" style="
+        margin-top:20px;
+        padding:12px 20px;
+        background:#d4af37;
+        color:white;
+        border:none;
+        font-size:17px;
+        font-weight:bold;
+        border-radius:8px;
+        cursor:pointer;
+        transition:0.3s;
+      "
+      onmouseover="this.style.opacity='0.85'"
+      onmouseout="this.style.opacity='1'">
+        Cerrar
+      </button>
+  </div>
+
+</div>
+
 <script>
   function showPopup() {
     document.getElementById("popup").style.display = "flex";
