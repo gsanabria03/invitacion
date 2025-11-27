@@ -157,7 +157,7 @@
 <div class="border-wrapper">
   <div class="container">
 
-    <h1>Stephanie & Gabriel</h1>
+    <h1>Gabriel & Stephanie</h1>
     <h2>Nos casamos</h2>
 
     <p>Con gran alegría te invitamos a celebrar nuestra boda.</p>
@@ -177,9 +177,6 @@
     <form id="formBoda">
       <label>Nombre completo *</label>
       <input type="text" id="nombre" required />
-
-      <label>Número telefónico (opcional)</label>
-      <input type="text" id="telefono" />
 
       <label>¿Asistirás?</label>
       <select id="asistencia" required>
@@ -218,12 +215,10 @@
     e.preventDefault();
 
     const nombre = document.getElementById("nombre").value;
-    const telefono = document.getElementById("telefono").value;
     const asistencia = document.getElementById("asistencia").value;
 
    push(ref(db, "confirmaciones/"), {
       nombre,
-      telefono,
       asistencia,
       fecha: new Date().toISOString(),
       secret: "131225"
