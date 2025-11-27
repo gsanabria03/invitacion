@@ -212,28 +212,6 @@
 
   </div>
 </div>
-  <script>
-  const music = document.getElementById("music");
-  let started = false;
-
-  document.addEventListener("click", () => {
-    if(!started){
-      music.volume = 0;
-      music.play();
-      started = true;
-
-      let vol = 0;
-      let fade = setInterval(() => {
-        if (vol < 1) {
-          vol += 0.02;
-          music.volume = vol;
-        } else {
-          clearInterval(fade);
-        }
-      }, 10);
-    }
-  });
-</script>
 
 
 <script type="module">
