@@ -134,19 +134,44 @@
 
   const tabla = document.getElementById("tablaRegistros");
 
-  onValue(ref(db, "confirmaciones/"), (snapshot) => {
-    tabla.innerHTML = "";
-    snapshot.forEach((child) => {
-      const data = child.val();
-      tabla.innerHTML += `
-        <tr>
-          <td>${data.nombre}</td>
-          <td>${data.asistencia}</td>
-          <td>${data.fecha}</td>
-        </tr>
-      `;
-    });
+onValue(ref(db, "confirmaciones/"), (snapshot) => {
+
+  let registros = [];
+
+  snapshot.forEach((child) => {
+    registros.push(child.val());
   });
+
+  // Ordenar: primero los que SÍ van ("Si"), luego los "No"
+  registros.sort((a, b) => {
+    if (a.asistencia === "Si" && b.asistencia !== "Si") return -1;
+    if (a.asistencia !== "Si" && b.asistencia === "Si") return 1;
+    return 0;
+  });
+
+  // Limpiar tabla
+  tabla.innerHTML = "";
+
+  // Insertar ordenados y con colores
+  registros.forEach((data) => {
+
+    // Clase según asistencia
+    let clase =
+      data.asistencia === "Si"
+        ? "asiste-si"
+        : "asiste-no";
+
+    tabla.innerHTML += `
+      <tr class="${clase}">
+        <td>${data.nombre}</td>
+        <td>${data.telefono || "-"}</td>
+        <td>${data.asistencia}</td>
+        <td>${data.fecha}</td>
+      </tr>
+    `;
+  });
+});
+
 </script>
   <script>
   const CORRECT_PASSWORD = "131225";
